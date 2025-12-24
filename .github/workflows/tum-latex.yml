@@ -7,10 +7,12 @@ on:
     paths:
       - 'tum-latex.dockerfile'
       - 'Makefile'
+      - 'makefiles/tum-latex.mk'
   pull_request:
     paths:
       - 'tum-latex.dockerfile'
       - 'Makefile'
+      - 'makefiles/tum-latex.mk'
 
 jobs:
   testing:

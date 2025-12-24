@@ -7,10 +7,12 @@ on:
     paths:
       - 'cpp-dev.dockerfile'
       - 'Makefile'
+      - 'makefiles/cpp-dev.mk'
   pull_request:
     paths:
       - 'cpp-dev.dockerfile'
       - 'Makefile'
+      - 'makefiles/cpp-dev.mk'
 
 jobs:
   testing:

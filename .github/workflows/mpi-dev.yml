@@ -7,10 +7,12 @@ on:
     paths:
       - 'mpi-dev.dockerfile'
       - 'Makefile'
+      - 'makefiles/mpi-dev.mk'
   pull_request:
     paths:
       - 'mpi-dev.dockerfile'
       - 'Makefile'
+      - 'makefiles/mpi-dev.mk'
 
 jobs:
   testing:
