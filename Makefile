@@ -16,5 +16,6 @@ login:
 include makefiles/cpp-dev.mk
 include makefiles/mpi-dev.mk
 include makefiles/tum-latex.mk
+include makefiles/reshuffle.mk
 	
 	
