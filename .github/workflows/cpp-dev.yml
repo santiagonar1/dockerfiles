@@ -3,9 +3,11 @@ on:
   push:
     paths:
       - 'cpp-dev.dockerfile'
+      - 'Makefile'
   pull_request:
     paths:
       - 'cpp-dev.dockerfile'
+      - 'Makefile'
 
 jobs:
   testing:
