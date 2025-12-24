@@ -1,6 +1,9 @@
 PLATFORMS = linux/amd64,linux/arm64
 TAG = latest
 
+# We need buildx to have multi-platforms build on the CI
+DOCKER_BUILD = docker buildx build
+
 .PHONY: help
 	
 help:
@@ -10,7 +13,7 @@ login:
 	docker login
 	
 cpp-dev:
-	DOCKER_BUILDKIT=1 docker build -t cpp-dev -f cpp-dev.dockerfile \
+	DOCKER_BUILDKIT=1 ${DOCKER_BUILD} -t cpp-dev -f cpp-dev.dockerfile \
 	--platform ${PLATFORMS} .
 
 pull-cpp-dev:
@@ -29,7 +32,7 @@ tum-latex:
 	$(eval PACKAGE_PATH := linux-installer/$(TUM_TEMPLATES_VERSION))
 	$(eval PACKAGE_FILE := tum-templates-$(TUM_TEMPLATES_VERSION).tar.gz)
 
-	DOCKER_BUILDKIT=1 docker build -t tum-latex -f tum-latex.dockerfile \
+	DOCKER_BUILDKIT=1 ${DOCKER_BUILD} -t tum-latex -f tum-latex.dockerfile \
 	 --secret id=gitlab_token,env=GITLAB_TOKEN \
 	 --platform ${PLATFORMS} \
 	 --build-arg INSTALLER_URL=$(PACKAGE_REGISTRY)/$(PACKAGE_PATH)/$(PACKAGE_FILE) .
