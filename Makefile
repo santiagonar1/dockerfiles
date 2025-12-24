@@ -1,8 +1,8 @@
-PLATFORMS = linux/amd64,linux/arm64
+PLATFORMS ?= linux/amd64,linux/arm64
 TAG = latest
 
 # We need buildx to have multi-platforms build on the CI
-DOCKER_BUILD = docker buildx build
+DOCKER_BUILD ?= docker buildx build
 
 .PHONY: help
 	

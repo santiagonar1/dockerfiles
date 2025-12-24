@@ -40,6 +40,14 @@ For example:
 make cpp-dev
 ```
 
+You might want to take a look at the `PLATFORMS` variable set in the [Makefile](./Makefile). By default,
+it will try to build both for x86_64 and ARM platforms. Depending on your hardware, you could choose one
+or the other:
+
+```sh
+PLATFORMS=linux/amd64 make <image-name>
+```
+
 ### Building `tum-latex`
 
 The `tum-latex` image requires access to the internal [TUM Templates](https://gitlab.lrz.de/latex4ei/tum-templates)
