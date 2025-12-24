@@ -1,6 +1,9 @@
 name: "Check cpp-dev"
 on:
   push:
+    branches:
+      - main
+      - develop
     paths:
       - 'cpp-dev.dockerfile'
       - 'Makefile'

@@ -1,6 +1,9 @@
 name: "Check tum-latex"
 on:
   push:
+    branches:
+      - main
+      - develop
     paths:
       - 'tum-latex.dockerfile'
       - 'Makefile'

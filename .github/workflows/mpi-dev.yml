@@ -1,6 +1,9 @@
 name: "Check mpi-dev"
 on:
   push:
+    branches:
+      - main
+      - develop
     paths:
       - 'mpi-dev.dockerfile'
       - 'Makefile'
