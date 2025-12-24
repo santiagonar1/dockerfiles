@@ -3,6 +3,8 @@
 This project contains several Dockerfiles used by my different projects. In particular:
 
 - **cpp-dev**: A full-featured Dockerfile used for C++ development.
+- **mpi-dev**: A full-featured Dockerfile used for MPI codes development.
+- **rehsuffle**: Container used for the reshuffle library.
 - **tum-latex**: The LaTeX template used for TUM documents, such as dissertations.
 
 ## Using the images
@@ -20,7 +22,7 @@ For example:
 make pull-cpp-dev
 ```
 
-You could then start a containe and mount your current directory with:
+You could then start a container and mount your current directory with:
 
 ```sh
 docker run --rm -it -v .:/my-project -w /my-project santiagonar1/<image-name> bash
