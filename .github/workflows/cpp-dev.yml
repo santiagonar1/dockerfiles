@@ -1,0 +1,20 @@
+name: "Check cpp-dev"
+on:
+  push:
+    paths:
+      - 'cpp-dev.dockerfile'
+  pull_request:
+    paths:
+      - 'cpp-dev.dockerfile'
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        
+      - name: Build docker image
+        run: make cpp-dev
+        
