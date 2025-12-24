@@ -8,51 +8,13 @@ DOCKER_BUILD ?= docker buildx build
 	
 help:
 	@echo "Check Makefile for options"
-
+	
 login:
 	docker login
 	
-cpp-dev:
-	DOCKER_BUILDKIT=1 ${DOCKER_BUILD} -t cpp-dev -f cpp-dev.dockerfile \
-	--platform ${PLATFORMS} .
-
-pull-cpp-dev:
-	docker pull santiagonar1/cpp-dev:${TAG}
-	
-push-cpp-dev: cpp-dev login
-	docker tag cpp-dev santiagonar1/cpp-dev:${TAG}
-	docker push santiagonar1/cpp-dev:${TAG}
-	
-mpi-dev:
-	DOCKER_BUILDKIT=1 ${DOCKER_BUILD} -t mpi-dev -f mpi-dev.dockerfile \
-	--platform ${PLATFORMS} .
-	
-pull-mpi-dev:
-	docker pull santiagonar1/mpi-dev:${TAG}
-	
-push-mpi-dev: mpi-dev login
-	docker tag mpi-dev santiagonar1/mpi-dev:${TAG}
-	docker push santiagonar1/mpi-dev:${TAG}
-	
-tum-latex:
-	$(eval GITLAB_API := https://gitlab.lrz.de/api/v4)
-	$(eval PROJECT_ID := 33555)
-	$(eval TUM_TEMPLATES_VERSION := main)
-
-	$(eval PACKAGE_REGISTRY := $(GITLAB_API)/projects/$(PROJECT_ID)/packages/generic)
-	$(eval PACKAGE_PATH := linux-installer/$(TUM_TEMPLATES_VERSION))
-	$(eval PACKAGE_FILE := tum-templates-$(TUM_TEMPLATES_VERSION).tar.gz)
-
-	DOCKER_BUILDKIT=1 ${DOCKER_BUILD} -t tum-latex -f tum-latex.dockerfile \
-	 --secret id=gitlab_token,env=GITLAB_TOKEN \
-	 --platform ${PLATFORMS} \
-	 --build-arg INSTALLER_URL=$(PACKAGE_REGISTRY)/$(PACKAGE_PATH)/$(PACKAGE_FILE) .
-
-pull-tum-latex:
-	docker pull santiagonar1/tum-latex:${TAG}
-	
-push-tum-latex: tum-latex login
-	docker tag tum-latex santiagonar1/tum-latex:${TAG}
-	docker push santiagonar1/tum-latex:${TAG}
+# Leave this at the end!
+include makefiles/cpp-dev.mk
+include makefiles/mpi-dev.mk
+include makefiles/tum-latex.mk
 	
 	
