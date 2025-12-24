@@ -1,3 +1,4 @@
+PLATFORMS = linux/amd64,linux/arm64
 TAG = latest
 
 .PHONY: help
@@ -10,7 +11,7 @@ login:
 	
 cpp-dev:
 	DOCKER_BUILDKIT=1 docker build -t cpp-dev -f cpp-dev.dockerfile \
-	--platform linux/amd64,linux/arm64 .
+	--platform ${PLATFORMS} .
 
 pull-cpp-dev:
 	docker pull santiagonar1/cpp-dev:${TAG}
@@ -30,7 +31,7 @@ tum-latex:
 
 	DOCKER_BUILDKIT=1 docker build -t tum-latex -f tum-latex.dockerfile \
 	 --secret id=gitlab_token,env=GITLAB_TOKEN \
-	 --platform linux/amd64,linux/arm64 \
+	 --platform ${PLATFORMS} \
 	 --build-arg INSTALLER_URL=$(PACKAGE_REGISTRY)/$(PACKAGE_PATH)/$(PACKAGE_FILE) .
 
 pull-tum-latex:
