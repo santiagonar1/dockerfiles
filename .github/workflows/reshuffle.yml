@@ -7,10 +7,12 @@ on:
     paths:
       - 'reshuffle.dockerfile'
       - 'Makefile'
+      - 'makefiles/reshuffle.mk'
   pull_request:
     paths:
       - 'reshuffle.dockerfile'
       - 'Makefile'
+      - 'makefiles/reshuffle.mk'
 
 jobs:
   testing:
