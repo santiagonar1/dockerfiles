@@ -46,3 +46,5 @@ RUN sed -i.bak -E 's|^(compiler\.cppstd\s*=\s*).*$|\1gnu20|' ~/.conan2/profiles/
 
 RUN sed -i.bak -E 's|^(compiler\.cppstd\s*=\s*).*$|\1gnu20|' ~/.conan2/profiles/clang \
     || echo -e "[settings]\ncompiler.cppstd=gnu20" >> ~/.conan2/profiles/clang
+    
+RUN sed -i.bak -E 's/^(compiler\.libcxx\s*=\s*)libstdc\+\+11/\1libc++/' ~/.conan2/profiles/clang
