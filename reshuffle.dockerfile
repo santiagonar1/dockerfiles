@@ -26,13 +26,15 @@ RUN apt install -y libopenblas-dev \
     libscalapack-mpi-dev \
     libomp-dev
 
+RUN pip install conan --break-system-packages
+
+RUN CC=gcc CXX=g++ conan profile detect --name=default
+
 RUN useradd -m -s /bin/bash ${USERNAME}
 
 USER ${USERNAME}
 ENV PATH=/home/${USERNAME}/.local/bin:${PATH}
 WORKDIR /home/${USERNAME}
-
-RUN pip install conan --break-system-packages
 
 RUN CC=gcc CXX=g++ conan profile detect --name=default
 RUN CC=gcc CXX=g++ conan profile detect --name=gcc
